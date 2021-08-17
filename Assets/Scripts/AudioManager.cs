@@ -21,7 +21,7 @@ public class AudioManager : MonoBehaviour
         }
         else
         {
-            Destroy(gameObject);
+          //  Destroy(gameObject);
         }
         foreach (Sounds item in sounds)
         {
@@ -47,7 +47,11 @@ public class AudioManager : MonoBehaviour
             Debug.LogWarning("Hey Audioname" + name + "Not Found");
             return;
         }
-        s.audioSource.Stop();
+        else
+        {
+            s.audioSource.Stop();
+        }
+        
     }
 
     public void PlayAudio(string name)
@@ -58,7 +62,11 @@ public class AudioManager : MonoBehaviour
             Debug.LogWarning("Hey Audioname " + name + " Not Found");
             return;
         }
-        s.audioSource.Play();
+        else
+        {
+            s.audioSource.Play();
+        }
+      
     }
 
     public void SetVolume(string name, float volumeValue)
@@ -73,6 +81,6 @@ public class AudioManager : MonoBehaviour
         {
             s.audioSource.volume = volumeValue;
         }
-
     }
+
 }

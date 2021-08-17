@@ -1924,10 +1924,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 9139885175075505600, guid: 2613e0063a9cd044c85fbacc41b483fd, type: 3}
-      propertyPath: sounds.Array.size
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 9139885175075505601, guid: 2613e0063a9cd044c85fbacc41b483fd, type: 3}
       propertyPath: m_RootOrder
       value: 5

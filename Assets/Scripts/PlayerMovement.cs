@@ -66,12 +66,7 @@ public class PlayerMovement : MonoBehaviour
             score = score + 5;
             Instantiate(particleEffectsPrefab, transform.position, Quaternion.identity);
         }
-        if (other.gameObject.CompareTag("Gem"))
-        {
-            Destroy(other.gameObject);
-            score = score + 10;
-            Instantiate(particleEffectsPrefab, transform.position, Quaternion.identity);
-        }
+        
     }
     
 }

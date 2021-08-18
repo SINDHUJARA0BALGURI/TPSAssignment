@@ -2,19 +2,26 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class PlayerMovement : MonoBehaviour
 {
     public CharacterController characterController;
     public float playerMoveSpeed;
     public float PlayerBackwardSpeed;
-    public float turnSpeed;
+    public float turnSpeed,jumpForce;
     Animator anim;
     AudioManager audioManager;
     public Text scoreText;
     [SerializeField]
-    private int score;
+    public int score ;
+    public bool groundCheck;
+  
     public GameObject particleEffectsPrefab;
+    public static PlayerMovement instance;
+    
+   
+   
 
 
 
@@ -27,6 +34,7 @@ public class PlayerMovement : MonoBehaviour
     void Start()
     {
         audioManager = GameObject.FindObjectOfType<AudioManager>();
+        instance = this;
     }
 
     // Update is called once per frame
@@ -42,31 +50,46 @@ public class PlayerMovement : MonoBehaviour
         {
             float moveSpeed = (verticalMovement > 0) ? playerMoveSpeed : PlayerBackwardSpeed;
             characterController.SimpleMove(transform.forward * verticalMovement * moveSpeed);
-            
+
         }
+        if (Input.GetKeyDown(KeyCode.Space) )
+        {
+            transform.Translate(Vector3.up*jumpForce*Time.deltaTime);
+        }
+
+
         scoreText.text = "Score : " + score;
-        //Quaternion direction = Quaternion.LookRotation(movement);
-        //transform.rotation = Quaternion.Slerp(transform.rotation, direction, Time.deltaTime * turnSpeed); ;
-
-
     }
-    public void OnTriggerEnter(Collider other)
-    {
-        if (other.gameObject.CompareTag("Coin"))
+   
+        public void OnTriggerEnter(Collider other)
         {
-            Destroy(other.gameObject);
-            score = score + 1;
-            Instantiate(particleEffectsPrefab, transform.position, Quaternion.identity);
+            if (other.gameObject.CompareTag("Coin"))
+            {
+                Destroy(other.gameObject);
+                score = score + 1;
+                Instantiate(particleEffectsPrefab, transform.position, Quaternion.identity);
+            }
+        if (other.gameObject.CompareTag("Heart"))
+        {
+            SceneManager.LoadScene(5);
         }
 
 
-        if (other.gameObject.CompareTag("coin"))
+            else if (other.gameObject.CompareTag("coin"))
+            {
+                Destroy(other.gameObject);
+                score = score + 5;
+                Instantiate(particleEffectsPrefab, transform.position, Quaternion.identity);
+            }
+        if (other.gameObject.CompareTag("terrain"))
         {
-            Destroy(other.gameObject);
-            score = score + 5;
-            Instantiate(particleEffectsPrefab, transform.position, Quaternion.identity);
+            groundCheck = true;
         }
-        
+
+        }
+
+
+
     }
+   
     
-}

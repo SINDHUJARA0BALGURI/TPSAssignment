@@ -27,6 +27,7 @@ public class GunController : MonoBehaviour
         {
             if (Input.GetButton("Fire1"))
             {
+                muzzleEffect.Play();
                 timer = 0f;
                 FireGun();
             }

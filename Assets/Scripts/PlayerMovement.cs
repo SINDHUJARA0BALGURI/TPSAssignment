@@ -20,11 +20,6 @@ public class PlayerMovement : MonoBehaviour
     public GameObject particleEffectsPrefab;
     public static PlayerMovement instance;
     
-   
-   
-
-
-
     // Start is called before the first frame update
     private void Awake()
     {
@@ -46,6 +41,7 @@ public class PlayerMovement : MonoBehaviour
         var movement = new Vector3(horizontalMovement, 0, verticalMovement);
         anim.SetFloat("Speed", verticalMovement);
         transform.Rotate(Vector3.up, horizontalMovement * turnSpeed * Time.deltaTime);
+
         if (verticalMovement != 0)
         {
             float moveSpeed = (verticalMovement > 0) ? playerMoveSpeed : PlayerBackwardSpeed;
@@ -70,10 +66,11 @@ public class PlayerMovement : MonoBehaviour
                 score = score + 1;
                 Instantiate(particleEffectsPrefab, transform.position, Quaternion.identity);
             }
+
             if (other.gameObject.CompareTag("Heart"))
-        {
+            {
             SceneManager.LoadScene(5);
-        }
+            }
 
 
             else if (other.gameObject.CompareTag("coin"))
@@ -83,16 +80,18 @@ public class PlayerMovement : MonoBehaviour
                 score = score + 5;
                 Instantiate(particleEffectsPrefab, transform.position, Quaternion.identity);
             }
-        if (other.gameObject.CompareTag("terrain"))
-        {
+
+            if (other.gameObject.CompareTag("terrain"))
+            {
             groundCheck = true;
-        }
-        if (other.gameObject.CompareTag("Health"))
-        {
+            }
+
+            if (other.gameObject.CompareTag("Health"))
+            {
             Destroy(other.gameObject);
             UIController.instance.healthSlider.value = Health.instance.startHealth;
             UIController.instance.healthText.text = "Health" + Health.instance.currentHealth;
-        }
+            }
 
         }
 

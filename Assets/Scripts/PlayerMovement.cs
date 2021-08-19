@@ -15,8 +15,6 @@ public class PlayerMovement : MonoBehaviour
     public Text scoreText;
     [SerializeField]
     public int score ;
-    public bool groundCheck;
-  
     public GameObject particleEffectsPrefab;
     public static PlayerMovement instance;
     
@@ -81,10 +79,7 @@ public class PlayerMovement : MonoBehaviour
                 Instantiate(particleEffectsPrefab, transform.position, Quaternion.identity);
             }
 
-            if (other.gameObject.CompareTag("terrain"))
-            {
-            groundCheck = true;
-            }
+            
 
             if (other.gameObject.CompareTag("Health"))
             {

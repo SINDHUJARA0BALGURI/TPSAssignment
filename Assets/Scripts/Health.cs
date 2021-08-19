@@ -5,21 +5,24 @@ using UnityEngine.SceneManagement;
 
 public class Health : MonoBehaviour
 {
-    [SerializeField]
-    int startHealth = 10;
+    
+    public int startHealth = 10;
     [SerializeField]
     public int currentHealth;
     public static Health instance;
 
-    public void Start()
+    private void Awake()
     {
         instance = this;
-        Time.timeScale = 1;
-    
-    
-        currentHealth = startHealth;
+        
 
-        UIController.instance.healthSlider.maxValue=startHealth;
+    }
+    public void Start()
+    {
+       
+        Time.timeScale = 1;
+        currentHealth = startHealth;
+        UIController.instance.healthSlider.maxValue = startHealth;
 
     }
     public void TakeDamage(int damageAmount)

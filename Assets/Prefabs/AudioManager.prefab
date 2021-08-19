@@ -51,17 +51,17 @@ MonoBehaviour:
     pitch: 0.508
     audioLoop: 1
     audioSource: {fileID: 0}
-  - audioName: Background
-    audioclip: {fileID: 8300000, guid: caef3048b7ee34690b330ed6629da3c4, type: 3}
+  - audioName: Coin
+    audioclip: {fileID: 8300000, guid: 9355d636d6e1239419069f6b4e46296b, type: 3}
     volume: 1
     pitch: 0.508
-    audioLoop: 1
+    audioLoop: 0
     audioSource: {fileID: 0}
-  - audioName: Background
-    audioclip: {fileID: 8300000, guid: caef3048b7ee34690b330ed6629da3c4, type: 3}
+  - audioName: Bullet
+    audioclip: {fileID: 8300000, guid: 33948a9ff404a1048a4b8c207b90c2e1, type: 3}
     volume: 1
     pitch: 0.508
-    audioLoop: 1
+    audioLoop: 0
     audioSource: {fileID: 0}
 --- !u!82 &3428375587863967066
 AudioSource:

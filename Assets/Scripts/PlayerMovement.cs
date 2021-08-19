@@ -65,11 +65,12 @@ public class PlayerMovement : MonoBehaviour
         {
             if (other.gameObject.CompareTag("Coin"))
             {
+                audioManager.PlayAudio("Coin");
                 Destroy(other.gameObject);
                 score = score + 1;
                 Instantiate(particleEffectsPrefab, transform.position, Quaternion.identity);
             }
-        if (other.gameObject.CompareTag("Heart"))
+            if (other.gameObject.CompareTag("Heart"))
         {
             SceneManager.LoadScene(5);
         }
@@ -77,6 +78,7 @@ public class PlayerMovement : MonoBehaviour
 
             else if (other.gameObject.CompareTag("coin"))
             {
+                audioManager.PlayAudio("Coin");
                 Destroy(other.gameObject);
                 score = score + 5;
                 Instantiate(particleEffectsPrefab, transform.position, Quaternion.identity);
@@ -84,6 +86,12 @@ public class PlayerMovement : MonoBehaviour
         if (other.gameObject.CompareTag("terrain"))
         {
             groundCheck = true;
+        }
+        if (other.gameObject.CompareTag("Health"))
+        {
+            Destroy(other.gameObject);
+            UIController.instance.healthSlider.value = Health.instance.startHealth;
+            UIController.instance.healthText.text = "Health" + Health.instance.currentHealth;
         }
 
         }

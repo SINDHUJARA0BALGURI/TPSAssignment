@@ -28,6 +28,7 @@ public class GunController : MonoBehaviour
             if (Input.GetButton("Fire1"))
             {
                 muzzleEffect.Play();
+                audioManager.PlayAudio("Bullet");
                 timer = 0f;
                 FireGun();
             }

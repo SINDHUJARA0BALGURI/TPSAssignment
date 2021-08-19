@@ -9,6 +9,7 @@ TagManager:
   - Gem
   - terrain
   - Heart
+  - Health
   layers:
   - Default
   - TransparentFX
